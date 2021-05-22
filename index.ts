@@ -137,10 +137,10 @@ export function Schema<ItemType>(): {
 export function Schema<ItemType>(
   resolver: () => ItemType[]
 ): {
-  deleteFrom: () => ReturnType<FunctionalQuery<ItemType, DeleteFrom<ItemType>>>;
-  insertInto: () => ReturnType<FunctionalQuery<ItemType, InsertInto<ItemType>>>;
-  selectFrom: () => ReturnType<FunctionalQuery<ItemType, SelectFrom<ItemType>>>;
-  update: () => ReturnType<FunctionalQuery<ItemType, Update<ItemType>>>;
+  deleteFrom: () => ReturnType<QueryFunction<ItemType, DeleteFrom<ItemType>>>;
+  insertInto: () => ReturnType<QueryFunction<ItemType, InsertInto<ItemType>>>;
+  selectFrom: () => ReturnType<QueryFunction<ItemType, SelectFrom<ItemType>>>;
+  update: () => ReturnType<QueryFunction<ItemType, Update<ItemType>>>;
 };
 export function Schema<ItemType>(resolver?: () => ItemType[]) {
   if (resolver) {
@@ -162,7 +162,7 @@ export function Schema<ItemType>(resolver?: () => ItemType[]) {
 }
 
 // ===== Types =====
-type FunctionalQuery<ItemType, ReturnType> = (data: ItemType[]) => ReturnType;
+type QueryFunction<ItemType, ReturnType> = (data: ItemType[]) => ReturnType;
 // deleteFrom
 type DeleteFrom<ItemType> = {
   result: ItemType[];

@@ -2,7 +2,7 @@
 
 Object-oriented sequel(-style) queries
 
-## Functions
+## Query functions
 
 ### deleteFrom
 
@@ -66,15 +66,15 @@ const { result } = update<Item>(data)
 
 ## Schema
 
-To reduce the boilerplate for creating functional queries, you can use the `Schema` function:
+To reduce the boilerplate for creating queries, you can use the `Schema` function:
 
 ```ts
-const fq = Schema<Item>();
+const q = Schema<Item>();
 
-fq.deleteFrom(data).where(/* ... */);
-fq.insertInto(data).values(/* ... */);
-fq.selectFrom(data).columns(/* ... */);
-fq.update(data).where(/* ... */);
+q.deleteFrom(data).where(/* ... */);
+q.insertInto(data).values(/* ... */);
+q.selectFrom(data).columns(/* ... */);
+q.update(data).where(/* ... */);
 ```
 
 The functions returned all received the initial item type.
@@ -82,14 +82,14 @@ The functions returned all received the initial item type.
 If you are working with an external data source like `localStorage`, you can go one step further and pass a resolver to `Schema`:
 
 ```ts
-const fq = Schema<Item>(() =>
+const q = Schema<Item>(() =>
   JSON.stringify(localStorage.getItem("example") as Item[])
 );
 
-fq.deleteFrom().where(/* ... */);
-fq.insertInto().values(/* ... */);
-fq.selectFrom().columns(/* ... */);
-fq.update().where(/* ... */);
+q.deleteFrom().where(/* ... */);
+q.insertInto().values(/* ... */);
+q.selectFrom().columns(/* ... */);
+q.update().where(/* ... */);
 ```
 
 ## License
