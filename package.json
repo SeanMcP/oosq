@@ -1,0 +1,37 @@
+{
+  "name": "oosq",
+  "version": "0.1.0",
+  "description": "Object-oriented sequel queries",
+  "main": "./lib/cjs/index.js",
+  "module": "./lib/esm/index.js",
+  "files": [
+    "lib/"
+  ],
+  "scripts": {
+    "prebuild": "npm run test",
+    "build": "tsc -p tsconfig.esm.json && tsc -p tsconfig.cjs.json",
+    "prepublish": "npm run build",
+    "test": "uvu -r ts-node/register tests",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SeanMcP/oosq.git"
+  },
+  "keywords": [],
+  "author": {
+    "email": "sean@seanmcp.com",
+    "name": "Sean McPherson",
+    "url": "https://seanmcp.com"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SeanMcP/oosq/issues"
+  },
+  "homepage": "https://github.com/SeanMcP/oosq#readme",
+  "devDependencies": {
+    "ts-node": "^9.1.1",
+    "typescript": "^4.1.5",
+    "uvu": "^0.5.1"
+  }
+}
